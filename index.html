@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Cadastro</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: linear-gradient(135deg, #eef2ff, #fdf2e9);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      color: #333;
+    }
+
+    /* Formulário centralizado */
+    .formulario {
+      background: #ffffff;
+      width: 100%;
+      max-width: 640px;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .formulario h1 {
+      text-align: center;
+      color: #e8590c;
+      margin-bottom: 8px;
+      font-size: 1.8rem;
+    }
+
+    .formulario .subtitulo {
+      text-align: center;
+      color: #777;
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+    }
+
+    /* Layout organizado: grade com duas colunas */
+    .grade {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 4px;
+    }
+
+    .campo.inteiro {
+      grid-column: 1 / -1;
+    }
+
+    label,
+    legend {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"],
+    select,
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fafafa;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Efeito ao focar */
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #e8590c;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(232, 89, 12, 0.18);
+    }
+
+    fieldset {
+      border: 1.5px solid #ddd;
+      border-radius: 10px;
+      padding: 10px 14px 12px;
+    }
+
+    .opcoes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+    }
+
+    .opcoes label {
+      font-weight: 400;
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      accent-color: #e8590c;
+      width: 16px;
+      height: 16px;
+    }
+
+    .botoes {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-enviar {
+      background: #e8590c;
+      color: #fff;
+    }
+
+    .btn-limpar {
+      background: #e9ecef;
+      color: #444;
+    }
+
+    /* Hover nos botões */
+    .btn-enviar:hover {
+      background: #c74a08;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(232, 89, 12, 0.35);
+    }
+
+    .btn-limpar:hover {
+      background: #ced4da;
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      .formulario {
+        padding: 22px 18px;
+      }
+
+      .grade {
+        grid-template-columns: 1fr;
+      }
+
+      .botoes {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form class="formulario" action="#" method="post" enctype="multipart/form-data">
+    <h1>Formulário de Cadastro</h1>
+    <p class="subtitulo">Preencha os campos abaixo</p>
+
+    <div class="grade">
+
+      <div class="campo inteiro">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+      </div>
+
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="Mínimo 6 caracteres" minlength="6" required>
+      </div>
+
+      <div class="campo">
+        <label for="nascimento">Data de nascimento</label>
+        <input type="date" id="nascimento" name="nascimento" required>
+      </div>
+
+      <div class="campo">
+        <label for="curso">Curso</label>
+        <select id="curso" name="curso" required>
+          <option value="">Selecione um curso</option>
+          <option value="ads">Análise e Desenvolvimento de Sistemas</option>
+          <option value="si">Sistemas de Informação</option>
+          <option value="cc">Ciência da Computação</option>
+          <option value="ec">Engenharia da Computação</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+
+      <div class="campo inteiro">
+        <fieldset>
+          <legend>Sexo</legend>
+          <div class="opcoes">
+            <label><input type="radio" name="sexo" value="feminino" required> Feminino</label>
+            <label><input type="radio" name="sexo" value="masculino"> Masculino</label>
+            <label><input type="radio" name="sexo" value="outro"> Outro</label>
+            <label><input type="radio" name="sexo" value="nao-informar"> Prefiro não informar</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="campo inteiro">
+        <fieldset>
+          <legend>Interesses</legend>
+          <div class="opcoes">
+            <label><input type="checkbox" name="interesses" value="programacao"> Programação</label>
+            <label><input type="checkbox" name="interesses" value="design"> Design</label>
+            <label><input type="checkbox" name="interesses" value="jogos"> Jogos</label>
+            <label><input type="checkbox" name="interesses" value="dados"> Dados</label>
+            <label><input type="checkbox" name="interesses" value="redes"> Redes</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="campo inteiro">
+        <label for="comentarios">Comentários</label>
+        <textarea id="comentarios" name="comentarios" placeholder="Escreva aqui seus comentários..."></textarea>
+      </div>
+
+      <div class="campo inteiro">
+        <label for="foto">Upload de foto</label>
+        <input type="file" id="foto" name="foto" accept="image/*">
+      </div>
+
+    </div>
+
+    <div class="botoes">
+      <button type="submit" class="btn-enviar">Enviar</button>
+      <button type="reset" class="btn-limpar">Limpar</button>
+    </div>
+  </form>
+
+</body>
+</html>
